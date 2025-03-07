@@ -7,7 +7,6 @@ fn main() {
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).unwrap();
         let args: Vec<String> = parse_command_line(&input);
-        println!("{:?}", args);
         let conf =match Config::get_args(&args){
             Ok(conf) => conf,
             Err(e) => {
@@ -15,7 +14,6 @@ fn main() {
                 continue;
             }
         };
-        println!("{:?}", conf);
         if let Err(e) = my_grep::run(&conf){
             println!("Error: {}", e);
         }
